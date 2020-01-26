@@ -1,0 +1,22 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -f ./client/Dockerfile.dev -t nmaliqi/react-test ./client
+
+script:
+  - docker run nmaliqi/react-test npm test -- --watchAll=false
+
+after_success:
+  - docker build -t nmaliqi/multi-client ./client
+  - docker build -t nmaliqi/multi-api ./api
+  - docker build -t nmaliqi/multi-nginx ./nginx
+  - docker build -t nmaliqi/multi-worker ./worker
+
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+  - docker push nmaliqi/multi-client
+  - docker push nmaliqi/multi-api
+  - docker push nmaliqi/multi-nginx
+  - docker push nmaliqi/multi-worker
