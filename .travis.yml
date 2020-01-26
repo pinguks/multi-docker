@@ -20,3 +20,16 @@ after_success:
   - docker push nmaliqi/multi-api
   - docker push nmaliqi/multi-nginx
   - docker push nmaliqi/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: eu-central-1
+  app: docker-react
+  env: MultiDocker-env
+  bucket_name: elasticbeanstalk-eu-central-1-352905010987
+  bucket_path: multi-docker
+  on:
+    branch: master
+  access_key_id: $AWS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET
