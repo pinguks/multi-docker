@@ -14,7 +14,7 @@ after_success:
   - docker build -t nmaliqi/multi-nginx ./nginx
   - docker build -t nmaliqi/multi-worker ./worker
 
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_ID" --password-stdin
 
   - docker push nmaliqi/multi-client
   - docker push nmaliqi/multi-api
