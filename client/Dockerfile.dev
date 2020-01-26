@@ -1,0 +1,11 @@
+FROM mhart/alpine-node
+
+WORKDIR /usr/client
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY ./ ./
+
+CMD ["npm", "start"]
