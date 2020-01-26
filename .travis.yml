@@ -24,7 +24,7 @@ after_success:
 deploy:
   provider: elasticbeanstalk
   region: eu-central-1
-  app: docker-react
+  app: multi-docker
   env: MultiDocker-env
   bucket_name: elasticbeanstalk-eu-central-1-352905010987
   bucket_path: multi-docker

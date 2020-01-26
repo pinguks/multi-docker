@@ -11,24 +11,28 @@
           "containerPort": 80
         }
       ],
-      "links": ["client", "api"]
+      "links": ["client", "api"],
+      "memory": 128
     },
     {
       "name": "client",
       "image": "nmaliqi/multi-client",
       "hostname": "client",
-      "essential": false
+      "essential": false,
+      "memory": 128
     },
     {
       "name": "api",
       "image": "nmaliqi/multi-api",
       "hostname": "api",
-      "essential": false
+      "essential": false,
+      "memory": 128
     },
     {
       "name": "worker",
       "image": "nmaliqi/multi-worker",
-      "essential": false
+      "essential": false,
+      "memory": 128
     }
   ]
 }
